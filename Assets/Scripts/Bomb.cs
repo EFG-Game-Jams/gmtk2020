@@ -29,12 +29,20 @@ public class Bomb : MonoBehaviour
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (IsAlive)
+        {
+            audioSource = GetComponent<AudioSource>();
 
-        eyesSprite.sprite = eyesVariants[eyesIndex];
+            eyesSprite.sprite = eyesVariants[eyesIndex];
 
-        pupilsOrigin = pupilsSprite.transform.localPosition;
-		nextBlink = Random.Range(2, 10);
+            pupilsOrigin = pupilsSprite.transform.localPosition;
+		    nextBlink = Random.Range(2, 10);
+        }
+        else
+        {
+            eyesSprite.enabled = false;
+            pupilsSprite.enabled = false;
+        }
     }
 
     private void Update()
@@ -44,6 +52,9 @@ public class Bomb : MonoBehaviour
 
     private void UpdateEyes()
     {
+        if (!IsAlive)
+            return;
+
         Vector3 mousePx = Input.mousePosition;
         Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mousePx);
         mouseWorld.z = 0;
@@ -82,11 +93,13 @@ public class Bomb : MonoBehaviour
 
     public void PlaySelectFx()
     {
-        PlayAudioClipRandom(clipsOnSelect);
+        if (IsAlive)
+            PlayAudioClipRandom(clipsOnSelect);
     }
     public void PlayDamageFx()
     {
-        PlayAudioClipRandom(clipsOnDamage, Random.Range(.2f, .6f));
+        if (IsAlive)
+            PlayAudioClipRandom(clipsOnDamage, Random.Range(.2f, .6f));
     }
 
     private void PlayAudioClipRandom(AudioClip[] clips, float delay = 0f)
@@ -94,6 +107,7 @@ public class Bomb : MonoBehaviour
         int index = Mathf.FloorToInt(Random.Range(0, clips.Length - .001f));
         PlayAudioClip(clips[index], delay);
     }
+
     private void PlayAudioClip(AudioClip clip, float delay)
     {
         if (audioSource.isPlaying)
@@ -101,5 +115,14 @@ public class Bomb : MonoBehaviour
 
         audioSource.clip = clip;
         audioSource.PlayDelayed(delay);
+    }
+
+    private bool IsAlive
+    {
+        get
+        {
+            var fuse = GetComponent<Fuse>();
+            return fuse != null && !fuse.forbidPlayerInteraction;
+        }
     }
 }
