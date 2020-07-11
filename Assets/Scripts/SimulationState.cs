@@ -158,7 +158,7 @@ public class SimulationState : Singleton<SimulationState>
         for (int i = 0; i < root.childCount; ++i)
         {
             Fuse fuse = root.GetChild(i).GetComponent<Fuse>();
-            if (fuse == null || fuse.timeToDetonate <= 0)
+            if (fuse == null || fuse.timeToDetonate <= 0 || fuse.forbidPlayerInteraction)
                 continue;
             fuseSettings.Add(i, fuse.timeToDetonate);
         }
