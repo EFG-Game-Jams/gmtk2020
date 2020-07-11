@@ -33,9 +33,11 @@ public class Fuse : MonoBehaviour
 
     IEnumerator CoDetonate()
     {
+        var waitForPhysicsUpdate = new WaitForFixedUpdate();
+
         while (timeToDetonate > 0)
         {
-            yield return null;
+            yield return waitForPhysicsUpdate;
             timeToDetonate -= Time.deltaTime;
 
             int displayTime = Mathf.CeilToInt(timeToDetonate);

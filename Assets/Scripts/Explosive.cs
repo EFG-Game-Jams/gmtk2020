@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Explosive : MonoBehaviour
 {
+	public GameObject explosionVisualEffect;
+
 	public float radius;
 	public float force;
 	public float damage;
@@ -31,6 +33,9 @@ public class Explosive : MonoBehaviour
 			float doDamage = strength * damage;
 			damageable.TakeDamage(doDamage);
 		}
+
+		if (explosionVisualEffect != null)
+			Instantiate(explosionVisualEffect, transform.position, Quaternion.identity);
 	}
 
 	private void OnDrawGizmosSelected()
