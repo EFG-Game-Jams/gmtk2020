@@ -12,7 +12,7 @@ public class Fuse : MonoBehaviour
 
     void Start()
     {
-        timeDisplay.text = "";
+        UpdateTimeDisplay();
     }
     
     public void StartSimulation()
@@ -48,7 +48,7 @@ public class Fuse : MonoBehaviour
         while (timeToDetonate > 0)
         {
             yield return waitForPhysicsUpdate;
-            timeToDetonate -= Time.deltaTime;
+            timeToDetonate -= Time.fixedDeltaTime;
             UpdateTimeDisplay();
         }
 

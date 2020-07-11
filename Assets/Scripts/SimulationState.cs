@@ -15,6 +15,11 @@ public class SimulationState : Singleton<SimulationState>
 
     private Dictionary<int, float> fuseSettings = new Dictionary<int, float>();
 
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     public void LoadScene(Mode mode, string name = null)
     {
         name = name ?? SceneManager.GetActiveScene().name;
@@ -24,14 +29,25 @@ public class SimulationState : Singleton<SimulationState>
 
         CurrentMode = mode;
         SceneManager.LoadScene(name);
+    }
 
-        if (mode == Mode.Edit || mode == Mode.Simulate)
-            LoadFuseSettings();
-        else
-            ClearFuseSettings();
-
-        if (mode == Mode.Simulate)
-            GetBombs().BroadcastMessage("StartSimulation");
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        switch (CurrentMode)
+        {
+            case Mode.None:
+                ClearFuseSettings();
+                break;
+            case Mode.Edit:
+                LoadFuseSettings();
+                break;
+            case Mode.Simulate:
+                LoadFuseSettings();
+                GetBombs().BroadcastMessage("StartSimulation");
+                break;
+            default:
+                throw new System.NotImplementedException();
+        }
     }
 
     private void ClearFuseSettings()
