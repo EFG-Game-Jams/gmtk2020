@@ -7,6 +7,7 @@ public class Fuse : MonoBehaviour
 {
     public TextMeshPro timeDisplay;
     public float timeToDetonate;
+    public bool forbidPlayerInteraction;
 
     private bool lit;
 
@@ -64,6 +65,9 @@ public class Fuse : MonoBehaviour
 
     public void UpdateTimeDisplay()
     {
+        if (timeDisplay == null)
+            return;
+
         int displayTime = Mathf.CeilToInt(timeToDetonate);
         if (displayTime == 0)
             timeDisplay.text = "";
@@ -73,6 +77,9 @@ public class Fuse : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (forbidPlayerInteraction)
+            return;
+
         if (Input.GetMouseButtonDown(0))
             FuseInteractionHandler.Instance.BeginInteraction(this);
     }
