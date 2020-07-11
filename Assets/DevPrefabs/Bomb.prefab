@@ -203,9 +203,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionVisualEffect: {fileID: 9097135089882979288, guid: 415d86c93d6a64ed6989a97d94ba3585,
     type: 3}
-  radius: 2
+  radius: 2.5
   force: 2000
-  damage: 600
+  damage: 700
 --- !u!114 &-4316605740807172023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeDisplay: {fileID: 5835191351151040368}
   timeToDetonate: 0
+  forbidPlayerInteraction: 0
 --- !u!96 &-6832843112012146049
 TrailRenderer:
   serializedVersion: 2
@@ -497,6 +498,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dfa61ed52caca368db4822d378585786, type: 3}
   - {fileID: 21300000, guid: 6fcb59e3c3d09ae68bb678742f78a138, type: 3}
   - {fileID: 21300000, guid: b69ebf015a6cd1635b5bfba474e8dcd1, type: 3}
+  eyesIndex: 0
   fuseSparkleEffect: {fileID: 5994397947660515681}
 --- !u!1 &3622122274331031202
 GameObject:
