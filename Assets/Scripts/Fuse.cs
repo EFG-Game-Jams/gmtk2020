@@ -16,7 +16,7 @@ public class Fuse : MonoBehaviour
     {
         UpdateTimeDisplay();
     }
-    
+
     public void StartSimulation()
     {
         if (timeToDetonate > 0)
