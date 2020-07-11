@@ -23,6 +23,10 @@ public class Explosive : MonoBehaviour
 			if (damageable == null)
 				continue;
 
+			Vector3 dir = (collider.attachedRigidbody.position - origin).normalized;
+			if (Physics.Raycast(origin, dir, out RaycastHit hit, radius) && hit.collider != collider)
+				continue;
+
 			float dist = Vector3.Distance(collider.attachedRigidbody.position, origin);
 			float distNormalised = Mathf.Clamp01(dist / radius);
 			float strength = 1f - Mathf.Sqrt(distNormalised);
