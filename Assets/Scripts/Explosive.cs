@@ -25,7 +25,7 @@ public class Explosive : MonoBehaviour
 
 			float dist = Vector3.Distance(collider.attachedRigidbody.position, origin);
 			float distNormalised = Mathf.Clamp01(dist / radius);
-			float strength = 1f - distNormalised;
+			float strength = 1f - Mathf.Sqrt(distNormalised);
 
 			Vector3 doForce = (collider.attachedRigidbody.position - origin).normalized * (strength * force);
 			collider.attachedRigidbody.AddForce(doForce, ForceMode.Force);
