@@ -6,8 +6,8 @@ public class DamageOnContact : MonoBehaviour
 {
 	public float damage;
 
-	private void OnCollisionEnter(Collider other)
+	private void OnCollisionEnter(Collision collision)
 	{
-		other.GetComponent<Damageable>()?.TakeDamage(damage);
+		collision.collider.GetComponent<Damageable>()?.TakeDamage(damage);
 	}
 }
