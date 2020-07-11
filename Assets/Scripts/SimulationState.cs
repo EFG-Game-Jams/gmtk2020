@@ -60,6 +60,9 @@ public class SimulationState : Singleton<SimulationState>
     }
     private bool HasSimulationCompleted()
     {
+        if (playState.allFuses == null)
+            return false; // not done loading
+
         foreach (var fuse in playState.allFuses)
             if (fuse != null && fuse.IsLit)
                 return false;

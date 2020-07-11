@@ -26,6 +26,8 @@ public class LevelSelectItem : MonoBehaviour
 			return;
 		}
 
+		level.Load();
+
 		levelName.text = level.displayName;
 
 		objectiveBronze.Text = level.bombsForBronze.ToString();
