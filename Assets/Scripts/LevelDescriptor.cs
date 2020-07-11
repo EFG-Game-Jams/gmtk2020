@@ -13,6 +13,7 @@ public class LevelDescriptor : ScriptableObject
 	public int bombsInScene;
 
 	[Header("Manual")]
+	public string displayName;
 	public int bombsFuseable;
 	public int bombsForBronze;
 	public int bombsForSilver;

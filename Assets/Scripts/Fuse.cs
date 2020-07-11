@@ -10,6 +10,8 @@ public class Fuse : MonoBehaviour
 
     private bool lit;
 
+    public bool IsLit => lit;
+
     void Start()
     {
         UpdateTimeDisplay();
@@ -54,6 +56,8 @@ public class Fuse : MonoBehaviour
         }
 
         GetComponent<Explosive>()?.Detonate();
+        SimulationState.Instance.OnBombDestroyed();
+
         yield return null;
         Destroy(gameObject);
     }

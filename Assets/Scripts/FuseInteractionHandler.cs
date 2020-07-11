@@ -11,9 +11,15 @@ public class FuseInteractionHandler : TransientSingleton<FuseInteractionHandler>
 	{
 		if (SimulationState.Instance.CurrentMode != SimulationState.Mode.Edit)
 			return;
-
+		
 		if (currentTarget != null)
 			return;
+
+		if (fuse.timeToDetonate <= 0 && !SimulationState.Instance.CanFuseBomb)
+		{
+			UiSoundFx.GetOrCreate().PlayAdjustFuseDenied();
+			return;
+		}
 
 		currentTarget = fuse;
 		prevMousePos = Input.mousePosition;
@@ -53,6 +59,11 @@ public class FuseInteractionHandler : TransientSingleton<FuseInteractionHandler>
 			float newFuseTime = Mathf.Clamp(prevFuseTime + change, 0, fuseTimeMax);
 			if (newFuseTime != prevFuseTime)
 			{
+				if (prevFuseTime <= 0)
+					SimulationState.Instance.OnBombFused();
+				else if (newFuseTime <= 0)
+					SimulationState.Instance.OnBombDefused();
+
 				UiSoundFx.GetOrCreate().PlayAdjustFuse();
 				currentTarget.SetTimeToDetonate(newFuseTime);
 			}

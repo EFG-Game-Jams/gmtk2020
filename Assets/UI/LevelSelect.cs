@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class LevelSelect : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SimulationState.Instance.ClearMode();
+                
+        var items = GetComponentsInChildren<LevelSelectItem>();
+        foreach (var item in items)
+            item.Refresh();
     }
 }
