@@ -13,8 +13,18 @@ public class Fuse : MonoBehaviour
     void Start()
     {
         timeDisplay.text = "";
+    }
+    
+    public void StartSimulation()
+    {
         if (timeToDetonate > 0)
-            LightFuse(timeToDetonate); 
+            LightFuse(timeToDetonate);
+    }
+
+    public void SetTimeToDetonate(float newTime)
+    {
+        timeToDetonate = newTime;
+        UpdateTimeDisplay();
     }
 
     public void LightFuse(float seconds)
@@ -39,13 +49,26 @@ public class Fuse : MonoBehaviour
         {
             yield return waitForPhysicsUpdate;
             timeToDetonate -= Time.deltaTime;
-
-            int displayTime = Mathf.CeilToInt(timeToDetonate);
-            timeDisplay.text = displayTime.ToString();
+            UpdateTimeDisplay();
         }
 
         GetComponent<Explosive>()?.Detonate();
         yield return null;
         Destroy(gameObject);
+    }
+
+    public void UpdateTimeDisplay()
+    {
+        int displayTime = Mathf.CeilToInt(timeToDetonate);
+        if (displayTime == 0)
+            timeDisplay.text = "";
+        else
+            timeDisplay.text = displayTime.ToString();
+    }
+
+    private void OnMouseDown()
+    {
+        if (Input.GetMouseButtonDown(0))
+            FuseInteractionHandler.Instance.BeginInteraction(this);
     }
 }
