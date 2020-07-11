@@ -37,6 +37,7 @@ public class Fuse : MonoBehaviour
         {
             timeToDetonate = seconds;
             lit = true;
+            GetComponent<Bomb>()?.OnFuseLit();
             StartCoroutine(CoDetonate());
         }
     }

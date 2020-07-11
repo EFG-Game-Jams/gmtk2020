@@ -17,5 +17,7 @@ public class Damageable : MonoBehaviour
 		{
 			GetComponent<Fuse>()?.LightFuse(timeToDie);
 		}
+
+		GetComponent<Bomb>()?.PlayDamageFx();
 	}
 }

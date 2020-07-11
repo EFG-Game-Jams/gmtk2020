@@ -17,12 +17,14 @@ public class FuseInteractionHandler : TransientSingleton<FuseInteractionHandler>
 
 		currentTarget = fuse;
 		prevMousePos = Input.mousePosition;
+
+		fuse.GetComponent<Bomb>()?.PlaySelectFx();
 	}
 
 	private void Update()
 	{
 		const float distanceThreshold = 5;
-		const float fuseIncrement = .25f;
+		const float fuseIncrement = .5f;
 		const float fuseTimeMax = 10f;
 
 		if (currentTarget == null)
@@ -51,7 +53,7 @@ public class FuseInteractionHandler : TransientSingleton<FuseInteractionHandler>
 			float newFuseTime = Mathf.Clamp(prevFuseTime + change, 0, fuseTimeMax);
 			if (newFuseTime != prevFuseTime)
 			{
-				// todo: ticking sound
+				UiSoundFx.GetOrCreate().PlayAdjustFuse();
 				currentTarget.SetTimeToDetonate(newFuseTime);
 			}
 
