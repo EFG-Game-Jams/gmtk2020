@@ -12,6 +12,6 @@ public class DevButtonModeEdit : MonoBehaviour
         if (SimulationState.Instance.CurrentMode != SimulationState.Mode.Simulate)
             button.interactable = false;
 
-        button.onClick.AddListener(() => SimulationState.Instance.LoadScene(SimulationState.Mode.Edit));
+        button.onClick.AddListener(() => SimulationState.Instance.LoadLevel(SimulationState.Mode.Edit));
     }
 }

@@ -11,7 +11,9 @@ public class SimulationState : Singleton<SimulationState>
         Edit,
         Simulate,
     }
+
     public Mode CurrentMode { get; private set; } = Mode.Edit;
+    public LevelDescriptor CurrentLevel { get; private set; }
 
     private Dictionary<int, float> fuseSettings = new Dictionary<int, float>();
 
@@ -20,15 +22,28 @@ public class SimulationState : Singleton<SimulationState>
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void LoadScene(Mode mode, string name = null)
+    public void LoadLevel(Mode mode, LevelDescriptor level = null)
     {
-        name = name ?? SceneManager.GetActiveScene().name;
+        level = level ?? CurrentLevel;
+
+#if UNITY_EDITOR
+        Resources.LoadAll("Levels");
+        var levels = Resources.FindObjectsOfTypeAll<LevelDescriptor>();
+        foreach (var levelAsset in levels)
+        {
+            if (levelAsset.sceneName == SceneManager.GetActiveScene().name)
+                level = levelAsset;
+            if (levelAsset.sceneIndex < 0)
+                Debug.LogWarning("Level descriptor '" + levelAsset.name + "' references scene '" + levelAsset.sceneName + "' which is not included in build.");
+        }
+#endif
 
         if (CurrentMode == Mode.Edit)
             SaveFuseSettings();
 
         CurrentMode = mode;
-        SceneManager.LoadScene(name);
+        CurrentLevel = level;
+        SceneManager.LoadScene(level.sceneName);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)

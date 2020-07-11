@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: StaticEnvironment
+    uniqueID: 1798774427
+    locked: 0
+  - name: Bombs
+    uniqueID: 2775203675
+    locked: 0
