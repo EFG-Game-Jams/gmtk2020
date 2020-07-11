@@ -49,5 +49,6 @@ public class LevelDescriptor : ScriptableObject
 	public void Save()
 	{
 		PlayerPrefs.SetInt(sceneName + "_highScore", highScore);
+		PlayerPrefs.Save();
 	}
 }

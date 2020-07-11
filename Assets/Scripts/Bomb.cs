@@ -14,17 +14,23 @@ public class Bomb : MonoBehaviour
     public SpriteRenderer pupilsSprite;
     public Sprite[] eyesVariants;
     private Vector3 pupilsOrigin;
+    public int eyesIndex = -1;
     private float nextBlink;
     private bool blinking;
 
     // Fuse
     public GameObject fuseSparkleEffect;
 
+    private void OnValidate()
+    {
+        if (eyesIndex < 0)
+            eyesIndex = Mathf.FloorToInt(Random.Range(0, eyesVariants.Length - .001f));
+    }
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
 
-        int eyesIndex = Mathf.FloorToInt(Random.Range(0, eyesVariants.Length - .001f));
         eyesSprite.sprite = eyesVariants[eyesIndex];
 
         pupilsOrigin = pupilsSprite.transform.localPosition;
@@ -68,6 +74,10 @@ public class Bomb : MonoBehaviour
     public void OnFuseLit()
     {
         fuseSparkleEffect.SetActive(true);
+    }
+    public void OnDetonate()
+    {
+        SimulationState.Instance.OnBombDestroyed();
     }
 
     public void PlaySelectFx()

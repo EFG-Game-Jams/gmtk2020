@@ -56,7 +56,7 @@ public class Fuse : MonoBehaviour
         }
 
         GetComponent<Explosive>()?.Detonate();
-        SimulationState.Instance.OnBombDestroyed();
+        GetComponent<Bomb>()?.OnDetonate();
 
         yield return null;
         Destroy(gameObject);

@@ -353,7 +353,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 72
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!82 &2610457400762475406
 AudioSource:
