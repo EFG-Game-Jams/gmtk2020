@@ -15,7 +15,8 @@ MonoBehaviour:
   sceneIndex: -1
   sceneName: TijmenTest
   bombsInScene: 3
-  bombsFuseable: 0
+  displayName: 
+  bombsFuseable: 15
   bombsForBronze: 0
   bombsForSilver: 0
   bombsForGold: 0
