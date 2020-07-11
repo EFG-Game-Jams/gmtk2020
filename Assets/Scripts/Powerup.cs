@@ -8,7 +8,7 @@ public abstract class Powerup : MonoBehaviour
 
 	protected abstract void ApplyPowerup(GameObject receiver);
 
-	private void OnTriggerEnter2D(Collider2D collision)
+	private void OnTriggerEnter(Collider collision)
 	{
 		if (!applied)
 		{

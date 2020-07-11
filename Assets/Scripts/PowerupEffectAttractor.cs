@@ -9,14 +9,14 @@ public class PowerupEffectAttractor : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		Vector2 origin = transform.position;
-		var affected = Physics2D.OverlapCircleAll(origin, radius);
+		Vector3 origin = transform.position;
+		var affected = Physics.OverlapSphere(origin, radius);
 		foreach (var collider in affected)
 		{
 			if (collider.gameObject == gameObject)
 				continue;
 
-			var rb = collider.GetComponent<Rigidbody2D>();
+			var rb = collider.GetComponent<Rigidbody>();
 			if (rb == null)
 				continue;
 
@@ -24,8 +24,8 @@ public class PowerupEffectAttractor : MonoBehaviour
 			float distNormalised = Mathf.Clamp01(dist / radius);
 			float strength = 1f - distNormalised;
 
-			Vector2 doForce = (origin - collider.attachedRigidbody.position).normalized * (strength * force);
-			collider.attachedRigidbody.AddForce(doForce, ForceMode2D.Force);
+			Vector3 doForce = (origin - collider.attachedRigidbody.position).normalized * (strength * force);
+			collider.attachedRigidbody.AddForce(doForce, ForceMode.Force);
 		}
 	}
 }

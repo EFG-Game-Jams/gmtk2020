@@ -12,8 +12,8 @@ public class Explosive : MonoBehaviour
 
 	public void Detonate()
 	{
-		Vector2 origin = transform.position;
-		var affected = Physics2D.OverlapCircleAll(origin, radius);
+		Vector3 origin = transform.position;
+		var affected = Physics.OverlapSphere(origin, radius);
 		foreach (var collider in affected)
 		{
 			if (collider.gameObject == gameObject)
@@ -27,8 +27,8 @@ public class Explosive : MonoBehaviour
 			float distNormalised = Mathf.Clamp01(dist / radius);
 			float strength = 1f - distNormalised;
 
-			Vector2 doForce = (collider.attachedRigidbody.position - origin).normalized * (strength * force);
-			collider.attachedRigidbody.AddForce(doForce, ForceMode2D.Force);
+			Vector3 doForce = (collider.attachedRigidbody.position - origin).normalized * (strength * force);
+			collider.attachedRigidbody.AddForce(doForce, ForceMode.Force);
 
 			float doDamage = strength * damage;
 			damageable.TakeDamage(doDamage);
