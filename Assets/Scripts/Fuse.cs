@@ -6,7 +6,7 @@ using UnityEngine;
 public class Fuse : MonoBehaviour
 {
     public TextMeshPro timeDisplay;
-    public float timeToDetonate;
+    public float timeToDetonate; // In half seconds (1 = 0.5 seconds)
     public bool forbidPlayerInteraction;
 
     private bool lit;
@@ -21,7 +21,7 @@ public class Fuse : MonoBehaviour
     public void StartSimulation()
     {
         if (timeToDetonate > 0)
-            LightFuse(timeToDetonate);
+            LightFuse(timeToDetonate / 2f);
     }
 
     public void SetTimeToDetonate(float newTime)
