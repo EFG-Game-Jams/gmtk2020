@@ -30,7 +30,7 @@ public class FuseInteractionHandler : TransientSingleton<FuseInteractionHandler>
 	private void Update()
 	{
 		const float distanceThreshold = 5;
-		const float fuseIncrement = .5f;
+		const float fuseIncrement = 1f / Fuse.FuseTicksPerSecond;
 		const float fuseTimeMax = 10f;
 
 		if (currentTarget == null)

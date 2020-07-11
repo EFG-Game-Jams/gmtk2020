@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Fuse : MonoBehaviour
 {
+    public const float FuseTicksPerSecond = 4;
+
     public TextMeshPro timeDisplay;
-    public float timeToDetonate; // In half seconds (1 = 0.5 seconds)
+    public float timeToDetonate;
     public bool forbidPlayerInteraction;
 
     private bool lit;
@@ -21,7 +23,7 @@ public class Fuse : MonoBehaviour
     public void StartSimulation()
     {
         if (timeToDetonate > 0)
-            LightFuse(timeToDetonate / 2f);
+            LightFuse(timeToDetonate);
     }
 
     public void SetTimeToDetonate(float newTime)
@@ -68,7 +70,7 @@ public class Fuse : MonoBehaviour
         if (timeDisplay == null)
             return;
 
-        int displayTime = Mathf.CeilToInt(timeToDetonate);
+        int displayTime = Mathf.CeilToInt(timeToDetonate * FuseTicksPerSecond);
         if (displayTime == 0)
             timeDisplay.text = "";
         else
