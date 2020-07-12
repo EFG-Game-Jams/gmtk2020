@@ -34,11 +34,18 @@ public class LevelDescriptor : ScriptableObject
 		var roots = scene.GetRootGameObjects();
 		foreach (var root in roots)
 		{
-			if (root.name != "Bombs")
+			if (root.name != "Root")
 				continue;
 
-			bombsInScene = root.transform.childCount;
-			break;
+			for (int i = 0; i < root.transform.childCount; ++i)
+			{
+				Transform child = root.transform.GetChild(i);
+				if (child.gameObject.name != "Bombs")
+					continue;
+
+				bombsInScene = child.childCount;
+				break;
+			}
 		}
 	}
 
