@@ -72,13 +72,15 @@ public class Bomb : MonoBehaviour
         {
             if (blinking)
             {
-                pupilsSprite.transform.localScale = Vector3.one;
-                nextBlink = Random.Range(2, 6);
+                //pupilsSprite.transform.localScale = Vector3.one;
+                pupilsSprite.enabled = true;
+                nextBlink = Random.Range(1, 3);
             }
             else
             {
-                pupilsSprite.transform.localScale = new Vector3(1, .3f, 1);
-                nextBlink = Random.Range(.15f, .3f);
+                //pupilsSprite.transform.localScale = new Vector3(1, .3f, 1);
+                pupilsSprite.enabled = false;
+                nextBlink = Random.Range(.1f, .2f);
             }
             blinking = !blinking;
         }
