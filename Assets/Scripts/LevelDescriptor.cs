@@ -51,4 +51,10 @@ public class LevelDescriptor : ScriptableObject
 		PlayerPrefs.SetInt(sceneName + "_highScore", highScore);
 		PlayerPrefs.Save();
 	}
+
+	[ContextMenu("Clear !ALL! PlayerPrefs for this project")]
+	private void ClearPlayerPrefs()
+	{
+		PlayerPrefs.DeleteAll();
+	}
 }

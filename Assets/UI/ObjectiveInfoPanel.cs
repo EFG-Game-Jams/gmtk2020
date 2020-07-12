@@ -19,7 +19,7 @@ public class ObjectiveInfoPanel : MonoBehaviour
 			if (value)
 				image.color = medalColors[medal];
 			else
-				image.color = medalColors[medal] * new Color(.5f, .5f, .5f, .5f);
+				image.color = medalColors[medal] * new Color(.5f, .5f, .5f, .25f);
 		}
 	}
 	public string Text

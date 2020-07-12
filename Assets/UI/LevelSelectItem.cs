@@ -9,8 +9,11 @@ public class LevelSelectItem : MonoBehaviour
 	public ObjectiveInfoPanel objectiveBronze;
 	public ObjectiveInfoPanel objectiveSilver;
 	public ObjectiveInfoPanel objectiveGold;
-
+	
 	[SerializeField] private LevelDescriptor level;
+
+	public bool IsValid => (level != null);
+	public bool LevelPassed => (level.highScore >= level.bombsForBronze);
 	
 	public void SetLevel(LevelDescriptor level)
 	{

@@ -113,6 +113,21 @@ public class SimulationState : Singleton<SimulationState>
         }
     }
 
+    public void ResetEditing()
+    {
+        Debug.Assert(CurrentMode == Mode.Edit);
+
+        Transform root = GetBombs().transform;
+        for (int i = 0; i < root.childCount; ++i)
+        {
+            Fuse fuse = root.GetChild(i).GetComponent<Fuse>();
+            if (fuse != null && fuse.timeToDetonate > 0 && !fuse.forbidPlayerInteraction)
+                fuse.timeToDetonate = 0;
+        }
+
+        LoadLevel(Mode.Edit, null);
+    }
+
     public void LoadLevel(Mode mode, LevelDescriptor level = null)
     {
         level = level ?? CurrentLevel;
