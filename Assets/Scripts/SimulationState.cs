@@ -110,6 +110,8 @@ public class SimulationState : Singleton<SimulationState>
                 CurrentLevel.highScore = playState.destroyedBombs;
                 CurrentLevel.Save();
             }
+
+            SimulationCompletePanel.Activate();
         }
     }
 

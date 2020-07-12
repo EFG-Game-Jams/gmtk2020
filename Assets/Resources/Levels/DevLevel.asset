@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 1
   sceneName: SampleScene
-  bombsInScene: 42
+  bombsInScene: 40
   displayName: Test Level
   bombsFuseable: 3
   bombsForBronze: 15
   bombsForSilver: 30
-  bombsForGold: 42
+  bombsForGold: 40

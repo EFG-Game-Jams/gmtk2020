@@ -63,5 +63,6 @@ public class LevelDescriptor : ScriptableObject
 	private void ClearPlayerPrefs()
 	{
 		PlayerPrefs.DeleteAll();
+		PlayerPrefs.Save();
 	}
 }
