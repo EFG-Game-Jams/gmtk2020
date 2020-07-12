@@ -33,6 +33,7 @@ public class SimulationState : Singleton<SimulationState>
 
     private PlayState playState;
     private Dictionary<int, float> fuseSettings = new Dictionary<int, float>();
+    private float finishedTimer;
 
     private void Start()
     {
@@ -69,6 +70,7 @@ public class SimulationState : Singleton<SimulationState>
         foreach (var rb in playState.allBombRigidBodies)
             if (rb != null && !rb.IsSleeping())
                 return false;
+
         return true;
     }
 
@@ -100,7 +102,13 @@ public class SimulationState : Singleton<SimulationState>
         if (CurrentMode != Mode.Simulate)
             return;
 
-        if (HasSimulationCompleted())
+        bool finished = HasSimulationCompleted();
+        if (!finished)
+            finishedTimer = 0;
+        else
+            finishedTimer += Time.deltaTime;
+
+        if (finishedTimer > 1)
         {
             CurrentMode = Mode.Completed;
             Debug.Log("Simulation completed");
@@ -187,9 +195,11 @@ public class SimulationState : Singleton<SimulationState>
         {
             Fuse fuse = root.GetChild(pair.Key).GetComponent<Fuse>();
             fuse.SetTimeToDetonate(pair.Value);
-
-            fuse.GetComponent<Bomb>()?.fuseSparkleEffect.SetActive(true);
         }
+        
+        foreach (var fuse in GetBombs().GetComponentsInChildren<Fuse>())
+            if (fuse.timeToDetonate > 0)
+                fuse.GetComponent<Bomb>()?.fuseSparkleEffect.SetActive(true);
 
         playState.fusedBombs = fuseSettings.Count;
     }

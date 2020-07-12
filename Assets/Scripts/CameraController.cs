@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 	new private Camera camera;
 	private Bounds cameraBounds;
 
-	const float zoomSensitivity = 5f;
+	const float zoomSensitivity = 2f;
 	const float zoomMin = 2.5f;
 	const float smoothTimeZoom = .25f;
 	const float smoothTimeTranslate = .25f;

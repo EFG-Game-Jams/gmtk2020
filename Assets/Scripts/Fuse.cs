@@ -36,7 +36,8 @@ public class Fuse : MonoBehaviour
     {
         if (lit)
         {
-            timeToDetonate = Mathf.Min(timeToDetonate, seconds);
+            return;
+            //timeToDetonate = Mathf.Min(timeToDetonate, seconds);
         }
         else
         {
