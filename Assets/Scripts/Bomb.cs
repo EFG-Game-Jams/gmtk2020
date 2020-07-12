@@ -9,6 +9,7 @@ public class Bomb : MonoBehaviour
     public AudioClip[] clipsOnSelect;
     public AudioClip[] clipsOnDamage;
     public AudioClip[] clipsOnNoFuse;
+    public AudioClip[] clipsOnCollide;
 
     // Eyes
     public SpriteRenderer eyesSprite;
@@ -82,6 +83,11 @@ public class Bomb : MonoBehaviour
             blinking = !blinking;
         }
     }
+
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        PlayAudioClipRandom(clipsOnCollide);
+    }*/
 
     public void OnFuseLit()
     {

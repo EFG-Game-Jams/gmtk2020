@@ -494,6 +494,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0039c5802758d1d8e8cb4550733f6287, type: 3}
   - {fileID: 8300000, guid: 0abae04964a9955ffacfd455af20dba1, type: 3}
   - {fileID: 8300000, guid: 6a9ff0bfb27cdb2c797fb28faf0937a0, type: 3}
+  clipsOnCollide:
+  - {fileID: 8300000, guid: 448275a8d20b7fb819d85bac40c5c307, type: 3}
+  - {fileID: 8300000, guid: f4f4a1349d9ea5576a937e312ab99a18, type: 3}
+  - {fileID: 8300000, guid: fecd8501c1beee2beaedee89ad237555, type: 3}
+  - {fileID: 8300000, guid: b332e338b4e8d4642813ab8ade707944, type: 3}
+  - {fileID: 8300000, guid: fb3d2c63afc37dc138a2a9562b1eec99, type: 3}
+  - {fileID: 8300000, guid: f1681b9bf3d442c1a82be58a2c513764, type: 3}
+  - {fileID: 8300000, guid: 722e8437fd12be9fc8faab9a184ce580, type: 3}
+  - {fileID: 8300000, guid: 776433c37fd767c9ab16ac0eeabce4e1, type: 3}
+  - {fileID: 8300000, guid: ee638e8b1cd7e5791ab182421f7b35c4, type: 3}
+  - {fileID: 8300000, guid: 3d7a5f5b9d47121df8e86b5b7fb4b846, type: 3}
+  - {fileID: 8300000, guid: a83b85c74678506ad97a6c7a1249c299, type: 3}
+  - {fileID: 8300000, guid: d60a15024ad35eaaaaf9f8836c98ff5c, type: 3}
   eyesSprite: {fileID: 8280896185043025197}
   pupilsSprite: {fileID: 4344242933538464272}
   eyesVariants:
@@ -503,7 +516,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dfa61ed52caca368db4822d378585786, type: 3}
   - {fileID: 21300000, guid: 6fcb59e3c3d09ae68bb678742f78a138, type: 3}
   - {fileID: 21300000, guid: b69ebf015a6cd1635b5bfba474e8dcd1, type: 3}
-  eyesIndex: 4
+  eyesIndex: 3
   fuseSparkleEffect: {fileID: 5994397947660515681}
 --- !u!1 &3622122274331031202
 GameObject:
