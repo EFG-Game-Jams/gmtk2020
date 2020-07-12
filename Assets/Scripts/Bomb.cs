@@ -23,7 +23,7 @@ public class Bomb : MonoBehaviour
 
     private void OnValidate()
     {
-        if (eyesIndex < 0)
+        //if (eyesIndex < 0)
             eyesIndex = Mathf.FloorToInt(Random.Range(0, eyesVariants.Length - .001f));
     }
 
