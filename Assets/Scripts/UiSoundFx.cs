@@ -6,10 +6,8 @@ public class UiSoundFx : MonoBehaviour
 {
 	public AudioSource source;
 	public AudioClip clipAdjustFuse;
-	public AudioClip clipAdjustFuseDenied;
 
 	public void PlayAdjustFuse() => Play(clipAdjustFuse);
-	public void PlayAdjustFuseDenied() => Play(clipAdjustFuseDenied);
 
 	private void Play(AudioClip clip)
 	{

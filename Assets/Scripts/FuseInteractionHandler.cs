@@ -17,7 +17,7 @@ public class FuseInteractionHandler : TransientSingleton<FuseInteractionHandler>
 
 		if (fuse.timeToDetonate <= 0 && !SimulationState.Instance.CanFuseBomb)
 		{
-			UiSoundFx.GetOrCreate().PlayAdjustFuseDenied();
+			fuse.GetComponent<Bomb>()?.PlayNoFuseFx();
 			return;
 		}
 
@@ -60,9 +60,15 @@ public class FuseInteractionHandler : TransientSingleton<FuseInteractionHandler>
 			if (newFuseTime != prevFuseTime)
 			{
 				if (prevFuseTime <= 0)
+				{
+					currentTarget.GetComponent<Bomb>()?.fuseSparkleEffect.SetActive(true);
 					SimulationState.Instance.OnBombFused();
+				}
 				else if (newFuseTime <= 0)
+				{
+					currentTarget.GetComponent<Bomb>()?.fuseSparkleEffect.SetActive(false);
 					SimulationState.Instance.OnBombDefused();
+				}
 
 				UiSoundFx.GetOrCreate().PlayAdjustFuse();
 				currentTarget.SetTimeToDetonate(newFuseTime);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-	private Camera camera;
+	new private Camera camera;
 	private Bounds cameraBounds;
 
 	const float zoomSensitivity = 5f;

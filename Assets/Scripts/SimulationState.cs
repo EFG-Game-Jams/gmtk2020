@@ -187,6 +187,8 @@ public class SimulationState : Singleton<SimulationState>
         {
             Fuse fuse = root.GetChild(pair.Key).GetComponent<Fuse>();
             fuse.SetTimeToDetonate(pair.Value);
+
+            fuse.GetComponent<Bomb>()?.fuseSparkleEffect.SetActive(true);
         }
 
         playState.fusedBombs = fuseSettings.Count;

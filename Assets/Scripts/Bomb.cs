@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip[] clipsOnSelect;
     public AudioClip[] clipsOnDamage;
+    public AudioClip[] clipsOnNoFuse;
 
     // Eyes
     public SpriteRenderer eyesSprite;
@@ -95,6 +96,11 @@ public class Bomb : MonoBehaviour
     {
         if (IsAlive)
             PlayAudioClipRandom(clipsOnSelect);
+    }
+    public void PlayNoFuseFx()
+    {
+        if (IsAlive)
+            PlayAudioClipRandom(clipsOnNoFuse);
     }
     public void PlayDamageFx()
     {
