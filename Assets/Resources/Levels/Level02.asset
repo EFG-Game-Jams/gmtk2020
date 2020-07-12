@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 3
   sceneName: Level02
-  bombsInScene: 3
+  bombsInScene: 9
   displayName: Chain Reaction
   bombsFuseable: 2
   bombsForBronze: 6

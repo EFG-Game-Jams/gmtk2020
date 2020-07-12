@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 4
   sceneName: Level03
-  bombsInScene: 0
+  bombsInScene: 14
   displayName: Choices
   bombsFuseable: 3
   bombsForBronze: 10
